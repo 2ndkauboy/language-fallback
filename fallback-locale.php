@@ -31,11 +31,7 @@ class Fallback_Locale {
 	}
 
 	/*
-	 * A function to check if the requested mofile exsists and if not, it checks if a mofile for the fallback locale exists
-	 *
-	 * The .mo file has to be named [domain]-[locale].mo
-	 * e.g. for the plugin Jetpack with the textdomain "jetpack"
-	 * and the locale "de_DE" is has to be jetpack-de_DE.mo
+	 * A function to check if the requested mofile exists and if not, it checks if a mofile for the fallback locale exists
 	 */
 	function fallback_load_textdomain( $override, $domain, $mofile ) {
 
@@ -43,7 +39,7 @@ class Fallback_Locale {
 
 		if ( ! is_readable( $mofile ) ) {
 			// try to get a fallback for the locale
-			$mofile = preg_replace( '/' . $this->locale . '\.mo/', $this->fallback_locale . '.mo', $mofile );
+			$mofile = str_replace( $this->locale . '.mo', $this->fallback_locale . '.mo', $mofile );
 
 			if ( ! is_readable( $mofile ) ) {
 				// fallback mofile not found
@@ -51,7 +47,6 @@ class Fallback_Locale {
 			} else {
 				// load fallback mofile
 				load_textdomain( $domain, $mofile );
-
 				// return true to skip the loading of the originally requested file
 				return true;
 			}
