@@ -1,8 +1,8 @@
 <?php
 
 /*
- * Plugin Name: Fallback Locale
- * Description: Set a locale as a fallback for the chosen locale (e.g. de_DE as a fallback for de_DE-formal)
+ * Plugin Name: Language Fallback
+ * Description: Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
  * Version: 0.1
  * Author: Bernhard Kau
  * Author URI: http://kau-boys.de
@@ -10,7 +10,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-3.0
  */
 
-class Fallback_Locale {
+class Language_Fallback {
 
 	// used to store the current locale e.g. "de_DE"
 	private $locale;
@@ -24,7 +24,7 @@ class Fallback_Locale {
 		$this->locale = get_locale();
 
 		// set folder for overwrites
-		$this->fallback_locale = apply_filters( 'fallback_locale', 'de_DE' );
+		$this->fallback_locale = apply_filters( 'langauge_fallback_locale', 'de_DE' );
 
 		// register action that is triggered, whenever a textdomain is loaded
 		add_action( 'override_load_textdomain', array( $this, 'fallback_load_textdomain' ), 10, 3 );
@@ -57,4 +57,4 @@ class Fallback_Locale {
 
 }
 
-new Fallback_Locale;
+new Language_Fallback;
