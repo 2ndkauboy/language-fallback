@@ -24,7 +24,7 @@ class Language_Fallback {
 		$this->locale = get_locale();
 
 		// set folder for overwrites
-		$this->fallback_locale = apply_filters( 'langauge_fallback_locale', 'de_DE' );
+		$this->fallback_locale = apply_filters( 'language_fallback_locale', 'de_DE' );
 
 		// register action that is triggered, whenever a textdomain is loaded
 		add_action( 'override_load_textdomain', array( $this, 'fallback_load_textdomain' ), 10, 3 );
