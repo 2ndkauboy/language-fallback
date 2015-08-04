@@ -3,7 +3,7 @@
 /*
  * Plugin Name: Language Fallback
  * Description: Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
- * Version: 0.1
+ * Version: 0.5
  * Author: Bernhard Kau
  * Author URI: http://kau-boys.de
  * License: GPLv3
@@ -34,6 +34,12 @@ class Language_Fallback {
 
 		// adding the settings fields
 		add_action( 'admin_init', array( $this, 'general_settings' ) );
+
+		/**
+		 * load plugin's translation
+		 * Do this after the callback is set, so even loading the translations for this plugin will benefit from the fallback!
+		 */
+		load_plugin_textdomain( 'language-fallback', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 
 	/**
