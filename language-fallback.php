@@ -1,9 +1,8 @@
 <?php
-
 /*
  * Plugin Name: Language Fallback
  * Description: Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
- * Version: 0.5
+ * Version: 1.0
  * Author: Bernhard Kau
  * Author URI: http://kau-boys.de
  * License: GPLv3
