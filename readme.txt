@@ -10,8 +10,8 @@ Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallba
 
 == Description ==
 
-Starting with WordPress 4.3, you can use languages such as "Deutsch (Sie)" (formal German) in your WordPress installation. But if the themes or plugins you are using to not have a
-translation file for this language, WordPress would use the default language, usually English, instead. With the help of this plugin, you can set a fallback for your chosen langauge.
+Starting with WordPress 4.3, you can use languages such as "Deutsch (Sie)" (formal German) in your WordPress installation. But if the themes or plugins you are using do not have a
+translation file for this language, WordPress would use the default language, usually English, instead. With the help of this plugin, you can set a fallback for your chosen language.
 Every time a translation file is loaded, the plugin will then load the fallback, if a translation for the originally chosen language was not found.
 
 A list of all of my plugins can be found on the [WordPress Plugin page](http://kau-boys.com/wordpress-plugins "WordPress Plugins") on my blog [kau-boys.com](http://kau-boys.com). 
@@ -22,7 +22,7 @@ A list of all of my plugins can be found on the [WordPress Plugin page](http://k
 
 == Installation ==
 
-Install the plugin as usual from the plugins page on your dashboard (by search or uploaded ZIP file) or upload it with FTP. You should than choose your fallback lanugage in "Settings > General".
+Install the plugin as usual from the plugins page on your dashboard (by search or uploaded ZIP file) or upload it with FTP. You should than choose your fallback language in "Settings > General".
 
 
 
