@@ -43,4 +43,4 @@ No. The plugin will automatically download the fallback language if it is not al
 
 ### 1.0.0 ###
 * Intitial release of the plugin
-* Time invested for this release: 180min
+* Time invested for this release: 200min
