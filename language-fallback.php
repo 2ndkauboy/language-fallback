@@ -65,7 +65,7 @@ class Language_Fallback {
 		 * @param string $domain   Text domain. Unique identifier for retrieving translated strings.
 		 * @param string $locale   The locale of the blog.
 		 */
-		$fallback_locale = apply_filters( 'fallback_locale', $domain, $this->locale );
+		$fallback_locale = apply_filters( 'fallback_locale', $this->fallback_locale, $domain, $this->locale );
 
 		$mofile = apply_filters( 'load_textdomain_mofile', $mofile, $domain );
 
