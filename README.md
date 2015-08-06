@@ -3,7 +3,7 @@
 **Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7914504  
 **Tags:** localization, language, locale, english, german, l10n, i18n, translation, fallback  
 **Requires at least:** 4.0  
-**Stable tag:** 1.0.1  
+**Stable tag:** 1.0.2  
 **Tested up to:** 4.3  
 
 Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
@@ -40,6 +40,10 @@ No. The plugin will automatically download the fallback language if it is not al
 
    
 ## Change Log ##
+
+### 1.0.2 ###
+* Bumping version number
+* Time invested for this release: 2min
 
 ### 1.0.1 ###
 * Small bugfix for the filter
