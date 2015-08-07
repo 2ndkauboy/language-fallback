@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Language Fallback
  * Description: Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Bernhard Kau
  * Author URI: http://kau-boys.com
  * Text Domain: language-fallback
@@ -65,22 +65,27 @@ class Language_Fallback {
 		 * @param string $domain   Text domain. Unique identifier for retrieving translated strings.
 		 * @param string $locale   The locale of the blog.
 		 */
-		$fallback_locale = apply_filters( 'fallback_locale', $this->fallback_locale, $domain, $this->locale );
+		$fallback_locales = apply_filters( 'fallback_locale', array( $this->fallback_locale ), $domain, $this->locale );
 
 		$mofile = apply_filters( 'load_textdomain_mofile', $mofile, $domain );
 
 		if ( ! is_readable( $mofile ) ) {
-			// try to get a fallback for the locale
-			$mofile = str_replace( $this->locale . '.mo', $fallback_locale . '.mo', $mofile );
 
-			if ( ! is_readable( $mofile ) ) {
-				// fallback mofile not found
-				return false;
-			} else {
-				// load fallback mofile
-				load_textdomain( $domain, $mofile );
-				// return true to skip the loading of the originally requested file
-				return true;
+			// try to get a fallback for the locale
+			foreach( $fallback_locales as $fallback_locale ) {
+
+				$mofile = str_replace( $this->locale . '.mo', $fallback_locale . '.mo', $mofile );
+
+				if ( ! is_readable( $mofile ) ) {
+					// fallback mofile not found
+					return false;
+				} else {
+					// load fallback mofile
+					load_textdomain( $domain, $mofile );
+
+					// return true to skip the loading of the originally requested file
+					return true;
+				}
 			}
 		}
 
