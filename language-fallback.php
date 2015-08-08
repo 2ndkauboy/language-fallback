@@ -74,14 +74,11 @@ class Language_Fallback {
 			// try to get a fallback for the locale
 			foreach( $fallback_locales as $fallback_locale ) {
 
-				$mofile = str_replace( $this->locale . '.mo', $fallback_locale . '.mo', $mofile );
+				$fallback_mofile = str_replace( $this->locale . '.mo', $fallback_locale . '.mo', $mofile );
 
-				if ( ! is_readable( $mofile ) ) {
-					// fallback mofile not found
-					return false;
-				} else {
+				if ( is_readable( $fallback_mofile ) ) {
 					// load fallback mofile
-					load_textdomain( $domain, $mofile );
+					load_textdomain( $domain, $fallback_mofile );
 
 					// return true to skip the loading of the originally requested file
 					return true;
