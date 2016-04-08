@@ -1,10 +1,10 @@
-# Backend Localization #
-**Contributors:** Kau-Boy  
-**Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7914504  
-**Tags:** localization, language, locale, english, german, l10n, i18n, translation, fallback  
-**Requires at least:** 4.0  
-**Stable tag:** 1.0  
-**Tested up to:** 4.5
+# Language Fallback #
+* Contributors: Kau-Boy
+* Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7914504
+* Tags: localization, language, locale, english, german, l10n, i18n, translation, fallback
+* Requires at least: 4.3
+* Stable tag: 1.0
+* Tested up to: 4.5
 
 Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
 
