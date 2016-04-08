@@ -1,0 +1,40 @@
+# Copyright (C) 2016 Language Fallback
+# This file is distributed under the same license as the Language Fallback package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Language Fallback 1.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/language-"
+"fallback\n"
+"POT-Creation-Date: 2016-04-08 10:50:29+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: language-fallback.php:99
+msgid "Language Fallback Settings"
+msgstr ""
+
+#: language-fallback.php:100
+msgid "Site Fallback Language"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Language Fallback"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Set a language as a fallback for the chosen language (e.g. \"Deutsch\" as a "
+"fallback for \"Deutsch (Sie)\")"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Bernhard Kau"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://kau-boys.com"
+msgstr ""

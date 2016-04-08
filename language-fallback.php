@@ -5,6 +5,8 @@
  * Version: 1.0
  * Author: Bernhard Kau
  * Author URI: http://kau-boys.de
+ * Text Domain: language-fallback
+ * Domain Path: /languages
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0
  */
