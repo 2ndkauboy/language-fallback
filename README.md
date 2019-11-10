@@ -4,7 +4,7 @@
 **Tags:** localization, language, locale, english, german, l10n, i18n, translation, fallback  
 **Requires at least:** 4.0  
 **Stable tag:** 1.0.4  
-**Tested up to:** 4.3  
+**Tested up to:** 5.3  
 
 Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
 
@@ -40,6 +40,10 @@ No. The plugin will automatically download the fallback language if it is not al
 
    
 ## Change Log ##
+
+### 1.0.5 ###
+* Increment Tested up to
+* Time invested for this release: 10min
 
 ### 1.0.4 ###
 * Remove the languages folder and prepare the plugin for automated deployments
