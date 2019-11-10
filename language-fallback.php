@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Language Fallback
  * Description: Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Bernhard Kau
  * Author URI: http://kau-boys.com
  * Text Domain: language-fallback
@@ -13,7 +13,7 @@
 
 class Language_Fallback {
 
-	/**
+/**
 	 * used to store the current locale e.g. "de_DE"
 	 *
 	 * @var string
