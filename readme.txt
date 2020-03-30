@@ -7,7 +7,6 @@ Stable tag: 1.0.4
 Tested up to: 5.3
 
 Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
-[](http://coderisk.com/wp/plugin/language-fallback/RIPS-RlykFmpuG_)
 
 == Description ==
 
