@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: localization, language, locale, english, german, l10n, i18n, translation, fallback
 Requires at least: 4.0
 Stable tag: 1.0.4
-Tested up to: 5.3
+Tested up to: 5.9
 
 Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
 
