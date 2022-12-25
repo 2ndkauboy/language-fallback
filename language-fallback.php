@@ -10,7 +10,7 @@
  * Plugin Name: Language Fallback
  * Plugin URI: https://github.com/2ndkauboy/language-fallback
  * Description: Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
- * Version: 1.0.5
+ * Version: 2.0.0
  * Author: Bernhard Kau
  * Author URI: https://kau-boys.com
  * Text Domain: language-fallback
@@ -38,6 +38,20 @@ class Language_Fallback {
 	private $fallback_locale;
 
 	/**
+	 * Used for the found "just in time" translations"
+	 *
+	 * @var array
+	 */
+	private $just_in_time_paths = [];
+
+	/**
+	 * Used to store all cached mo files.
+	 *
+	 * @var null|array
+	 */
+	private $cached_mo_files;
+
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
@@ -50,6 +64,9 @@ class Language_Fallback {
 
 		// Register action that is triggered, whenever a textdomain is loaded.
 		add_action( 'override_load_textdomain', [ $this, 'fallback_load_textdomain' ], 10, 3 );
+
+		// Hook into `gettext` to load the `mofile` the first time a translation is needed for a textdomain.
+		add_filter( 'gettext', [ $this, 'just_in_time_fallback' ], 10, 3 );
 
 		// Adding the settings fields.
 		add_action( 'admin_init', [ $this, 'general_settings' ] );
@@ -105,6 +122,119 @@ class Language_Fallback {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Fixing missing translation files in the `_load_textdomain_just_in_time`.
+	 *
+	 * @param string $translation Translated text.
+	 * @param string $text Text to translate.
+	 * @param string $domain Text domain. Unique identifier for retrieving translated strings.
+	 *
+	 * @return string Translated text.
+	 */
+	public function just_in_time_fallback( $translation, $text, $domain ) {
+		if ( 'default' === $domain ) {
+			return $translation;
+		}
+
+		$translations = get_translations_for_domain( $domain );
+
+		if ( $translations instanceof NOOP_Translations ) {
+			// If we have already searched for translations but couldn't find any, return the original translation string.
+			if ( array_key_exists( $domain, $this->just_in_time_paths ) && empty( $this->just_in_time_paths[ $domain ] ) ) {
+				return $translation;
+			}
+
+			// @phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+			$fallback_locales = apply_filters( 'fallback_locale', [ $this->fallback_locale ], $domain, $this->locale );
+
+			$path = $this->get_path_for_mofile( $domain, $fallback_locales );
+
+			if ( ! $path ) {
+				return $translation;
+			}
+
+			foreach ( $fallback_locales as $locale ) {
+				$mofile = "{$path}/{$domain}-{$locale}.mo";
+
+				if ( load_textdomain( $domain, $mofile ) ) {
+					$this->just_in_time_paths[ $domain ] = $mofile;
+
+					$translations = get_translations_for_domain( $domain );
+					$translation  = $translations->translate( $text );
+
+					break;
+				}
+			}
+
+			// No translations for this domain could be found.
+			$this->just_in_time_paths[ $domain ] = '';
+		}
+
+		return $translation;
+	}
+
+	/**
+	 * Get the path for the domain by checking in the `themes` and `plugins` language folders.
+	 *
+	 * Similar implementation than in the `preferred-languages` plugin version 1.8.0 on `/inc/class-preferred-languages-textdomain-registry.php:84`
+	 *
+	 * @param string $domain The current textdomain.
+	 * @param array  $fallback_locales The list of fallback languages.
+	 *
+	 * @return false|string
+	 */
+	private function get_path_for_mofile( $domain, $fallback_locales ) {
+		if ( null === $this->cached_mo_files ) {
+			$this->cached_mo_files = [];
+			$this->set_cached_mo_files();
+		}
+		foreach ( $fallback_locales as $locale ) {
+			$mo_file = "{$domain}-{$locale}.mo";
+
+			$path = WP_LANG_DIR . '/plugins/' . $mo_file;
+			if ( in_array( $path, $this->cached_mo_files, true ) ) {
+				$path = WP_LANG_DIR . '/plugins/';
+
+				$this->just_in_time_paths[ $domain ] = $path;
+
+				return $path;
+			}
+
+			$path = WP_LANG_DIR . '/themes/' . $mo_file;
+			if ( in_array( $path, $this->cached_mo_files, true ) ) {
+				$path = WP_LANG_DIR . '/themes/';
+
+				$this->just_in_time_paths[ $domain ] = $path;
+
+				return $path;
+			}
+		}
+
+		$this->just_in_time_paths[ $domain ] = '';
+
+		return false;
+	}
+
+	/**
+	 * Reads and caches all available MO files from the plugins and themes language directories.
+	 *
+	 * Similar implementation than in the `preferred-languages` plugin version 1.8.0 on `/inc/class-preferred-languages-textdomain-registry.php:123`
+	 */
+	protected function set_cached_mo_files() {
+		$locations = [
+			WP_LANG_DIR . '/plugins',
+			WP_LANG_DIR . '/themes',
+		];
+
+		foreach ( $locations as $location ) {
+			$mo_files = glob( $location . '/*.mo' );
+
+			if ( $mo_files ) {
+				array_push( $this->cached_mo_files, ...$mo_files );
+			}
+		}
 	}
 
 	/**
