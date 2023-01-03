@@ -2,9 +2,9 @@
 Contributors: Kau-Boy
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7914504
 Tags: localization, language, locale, english, german, l10n, i18n, translation, fallback
+Requires PHP: 5.6
 Requires at least: 4.0
-Stable tag: 2.0.0-beta
-Tested up to: 5.9
+Tested up to: 6.1
 
 Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
 
@@ -38,6 +38,10 @@ No. The plugin will automatically download the fallback language if it is not al
 
    
 == Change Log ==
+
+= 2.0.0 =
+* Implement a solution for "_load_textdomain_just_in_time" function not loading the fallback ".mo" files
+* Time invested for this release: 150min
 
 = 1.0.5 =
 * Increment Tested up to
