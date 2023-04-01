@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: localization, language, locale, english, german, l10n, i18n, translation, fallback
 Requires PHP: 5.6
 Requires at least: 4.0
-Tested up to: 6.1
+Tested up to: 6.2
 
 Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
 
