@@ -298,7 +298,6 @@ class Language_Fallback {
 			]
 		);
 	}
-
 }
 
 new Language_Fallback();
