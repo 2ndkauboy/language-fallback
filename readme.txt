@@ -39,6 +39,10 @@ No. You can choose any fallback language that fits your original language. Think
 
 No. The plugin will automatically download the fallback language if it is not already installed.
 
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/e47d5c4f-b575-41b7-8d6c-a5b49374c09e)
+
 
 == Change Log ==
 
