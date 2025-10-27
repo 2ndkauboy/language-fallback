@@ -5,7 +5,7 @@ Tags: localization, language, locale, translation, fallback
 Requires PHP: 5.6
 Requires at least: 4.0
 Tested up to: 6.9
-Stable tag: 2.0.1
+Stable tag: 2.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -45,6 +45,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 == Change Log ==
+
+= 2.1.0 =
+* Add `sanitize_callback` for setting
+* Increment Tested up to
+* Add link to Patchstack in readme
+* Time invested for this release: 30min
 
 = 2.0.1 =
 * Fix some minor Plugin Check issues
