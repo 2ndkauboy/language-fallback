@@ -256,7 +256,10 @@ class Language_Fallback {
 		);
 		register_setting(
 			'general',
-			'fallback_locale'
+			'fallback_locale',
+			[
+				'sanitize_callback' => 'sanitize_locale_name',
+			]
 		);
 	}
 
