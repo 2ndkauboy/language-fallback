@@ -10,7 +10,7 @@
  * Plugin Name: Language Fallback
  * Plugin URI: https://github.com/2ndkauboy/language-fallback
  * Description: Set a language as a fallback for the chosen language (e.g. "Deutsch" as a fallback for "Deutsch (Sie)")
- * Version: 2.0.1
+ * Version: 2.1.1
  * Author: Bernhard Kau
  * Author URI: https://kau-boys.com
  * Text Domain: language-fallback
