@@ -1,5 +1,6 @@
 # Development and CI tooling — never part of the released plugin.
 /.git
+/.gitattributes
 /.github
 /.wordpress-org
 /.distignore
@@ -17,3 +18,4 @@
 /composer.lock
 /package.json
 /package-lock.json
+*.lock
