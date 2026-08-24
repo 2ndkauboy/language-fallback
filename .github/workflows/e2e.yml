@@ -1,0 +1,67 @@
+name: E2E Tests
+
+on:
+  pull_request:
+    paths:
+      - '**.php'
+      - '**.js'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'playwright.config.js'
+      - 'tests/e2e/**'
+      - '.wp-env.json'
+      - '.github/workflows/e2e.yml'
+  push:
+    branches:
+      - develop
+      - stable
+
+jobs:
+  e2e:
+    name: WordPress ${{ matrix.label }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: '7.1'
+            core: 'WordPress/WordPress#7.1'
+          - label: 'trunk'
+            core: 'WordPress/WordPress#master'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install the Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Select the WordPress version
+        run: echo '{ "core": "${{ matrix.core }}" }' > .wp-env.override.json
+
+      - name: Start the WordPress environment
+        run: npm run env:start
+
+      - name: Run the E2E tests
+        run: npm run test:e2e
+
+      - name: Upload the artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-artifacts-${{ matrix.label }}
+          path: artifacts
+          retention-days: 7
+
+      - name: Stop the WordPress environment
+        if: always()
+        run: npm run env:stop

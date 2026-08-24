@@ -1,0 +1,15 @@
+artifacts
+.distignore
+.git
+.gitattributes
+.github
+.gitignore
+node_modules
+package.json
+package-lock.json
+phpcs.xml
+playwright.config.js
+tests
+.wordpress-org
+.wp-env.json
+.wp-env.override.json
