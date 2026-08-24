@@ -2,3 +2,4 @@
 /node_modules/
 /artifacts/
 /.phpunit.result.cache
+/.wp-env.override.json

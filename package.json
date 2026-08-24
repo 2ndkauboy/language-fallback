@@ -16,9 +16,15 @@
 		"env:destroy": "wp-env destroy",
 		"composer": "wp-env run tests-cli --env-cwd=wp-content/plugins/language-fallback -- composer",
 		"test:integration": "wp-env run tests-cli --env-cwd=wp-content/plugins/language-fallback -- composer test:integration",
-		"test:integration:multisite": "wp-env run tests-cli --env-cwd=wp-content/plugins/language-fallback -- env WP_MULTISITE=1 composer test:integration"
+		"test:integration:multisite": "wp-env run tests-cli --env-cwd=wp-content/plugins/language-fallback -- env WP_MULTISITE=1 composer test:integration",
+		"test:e2e": "wp-scripts test-playwright",
+		"test:e2e:debug": "wp-scripts test-playwright --debug",
+		"test:e2e:ui": "wp-scripts test-playwright --ui"
 	},
 	"devDependencies": {
-		"@wordpress/env": "^11.13.0"
+		"@playwright/test": "^1.62.1",
+		"@wordpress/e2e-test-utils-playwright": "^1.53.0",
+		"@wordpress/env": "^11.13.0",
+		"@wordpress/scripts": "^34.1.0"
 	}
 }
