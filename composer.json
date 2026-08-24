@@ -29,6 +29,7 @@
         }
     },
     "scripts": {
-        "test:unit": "phpunit -c phpunit.xml.dist --testsuite unit"
+        "test:unit": "phpunit -c phpunit.xml.dist --testsuite unit",
+        "test:integration": "phpunit -c phpunit-integration.xml.dist --testsuite integration"
     }
 }

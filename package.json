@@ -1,0 +1,24 @@
+{
+	"name": "language-fallback",
+	"version": "2.1.1",
+	"description": "Set a language as a fallback for the chosen language (e.g. \"Deutsch\" as a fallback for \"Deutsch (Sie)\")",
+	"author": "Bernhard Kau",
+	"license": "GPL-3.0-or-later",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/2ndkauboy/language-fallback.git"
+	},
+	"scripts": {
+		"wp-env": "wp-env",
+		"env:start": "wp-env start",
+		"env:stop": "wp-env stop",
+		"env:destroy": "wp-env destroy",
+		"composer": "wp-env run tests-cli --env-cwd=wp-content/plugins/language-fallback -- composer",
+		"test:integration": "wp-env run tests-cli --env-cwd=wp-content/plugins/language-fallback -- composer test:integration",
+		"test:integration:multisite": "wp-env run tests-cli --env-cwd=wp-content/plugins/language-fallback -- env WP_MULTISITE=1 composer test:integration"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^11.13.0"
+	}
+}
