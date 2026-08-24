@@ -1,0 +1,50 @@
+name: Integration Tests
+
+on:
+  pull_request:
+    paths:
+      - '**.php'
+      - '!tests/e2e/**'
+      - 'composer.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'phpunit-integration.xml.dist'
+      - '.wp-env.json'
+      - '.github/workflows/integration.yml'
+  push:
+    branches:
+      - develop
+      - stable
+
+jobs:
+  integration:
+    name: WordPress in wp-env
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Start the WordPress environment
+        run: npm run env:start
+
+      - name: Install Composer dependencies
+        run: npm run composer install
+
+      - name: Run the integration tests
+        run: npm run test:integration
+
+      - name: Run the integration tests on a multisite
+        run: npm run test:integration:multisite
+
+      - name: Stop the WordPress environment
+        if: always()
+        run: npm run env:stop
