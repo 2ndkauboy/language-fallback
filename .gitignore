@@ -1,0 +1,6 @@
+*.lock
+/node_modules/
+/artifacts/
+/vendor/
+/.wp-env.override.json
+/.phpunit.result.cache
