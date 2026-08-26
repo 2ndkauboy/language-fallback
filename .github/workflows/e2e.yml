@@ -46,7 +46,8 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Select the WordPress version
-        run: echo '{ "core": "${{ matrix.core }}" }' > .wp-env.override.json
+        run: |
+          echo '{ "core": "${{ matrix.core }}" }' > .wp-env.override.json
 
       - name: Start the WordPress environment
         run: npm run env:start
