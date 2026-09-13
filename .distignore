@@ -8,6 +8,8 @@
 /.editorconfig
 /.wp-env.json
 /.wp-env.override.json
+/.wp-env.test.json
+/.wp-env.test.override.json
 /artifacts
 /node_modules
 /vendor

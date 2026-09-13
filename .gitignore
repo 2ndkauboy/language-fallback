@@ -3,3 +3,4 @@
 /artifacts/
 /.phpunit.result.cache
 /.wp-env.override.json
+/.wp-env.test.override.json
