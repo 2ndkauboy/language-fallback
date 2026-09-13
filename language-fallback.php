@@ -18,6 +18,11 @@
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class Language_Fallback.
  */
