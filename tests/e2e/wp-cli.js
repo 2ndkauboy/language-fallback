@@ -13,20 +13,34 @@ const path = require( 'node:path' );
 const PLUGIN_ROOT = path.join( __dirname, '..', '..' );
 
 /**
- * Run a list of shell commands in the WP-CLI container of the given environment.
+ * Run a list of shell commands in the WP-CLI container of the test environment.
  *
  * All commands are chained with `&&` and run in a single container call, so a failing
  * command aborts the rest.
  *
- * @param {string[]} commands    The shell commands to run.
- * @param {string}   environment The `wp-env` environment, either `tests` or `development`.
+ * The test environment is a separate `wp-env` configuration with its own containers
+ * and database, so the container is the plain `cli` service of that configuration —
+ * not the `tests-cli` service that the deprecated two-environments-in-one-file setup
+ * used to provide.
+ *
+ * @param {string[]} commands   The shell commands to run.
+ * @param {string}   configFile The `wp-env` configuration file of the environment.
  *
  * @return {void}
  */
-function runWpCli( commands, environment = 'tests' ) {
+function runWpCli( commands, configFile = '.wp-env.test.json' ) {
 	execFileSync(
 		'npx',
-		[ 'wp-env', 'run', `${ environment }-cli`, '--', 'sh', '-c', commands.join( ' && ' ) ],
+		[
+			'wp-env',
+			'run',
+			'cli',
+			`--config=${ configFile }`,
+			'--',
+			'sh',
+			'-c',
+			commands.join( ' && ' ),
+		],
 		{ cwd: PLUGIN_ROOT, stdio: 'inherit' }
 	);
 }

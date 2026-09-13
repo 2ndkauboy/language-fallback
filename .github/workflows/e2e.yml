@@ -9,7 +9,7 @@ on:
       - 'package-lock.json'
       - 'playwright.config.js'
       - 'tests/e2e/**'
-      - '.wp-env.json'
+      - '.wp-env.test.json'
       - '.github/workflows/e2e.yml'
   push:
     branches:
@@ -47,10 +47,10 @@ jobs:
 
       - name: Select the WordPress version
         run: |
-          echo '{ "core": "${{ matrix.core }}" }' > .wp-env.override.json
+          echo '{ "core": "${{ matrix.core }}" }' > .wp-env.test.override.json
 
       - name: Start the WordPress environment
-        run: npm run env:start
+        run: npm run env:test:start
 
       - name: Run the E2E tests
         run: npm run test:e2e
@@ -65,4 +65,4 @@ jobs:
 
       - name: Stop the WordPress environment
         if: always()
-        run: npm run env:stop
+        run: npm run env:test:stop
