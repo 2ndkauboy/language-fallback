@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: localization, language, locale, translation, fallback
 Requires PHP: 5.6
 Requires at least: 4.0
-Tested up to: 6.9
+Tested up to: 7.1
 Stable tag: 2.1.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
