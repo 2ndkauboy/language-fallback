@@ -7,6 +7,7 @@
 /.gitignore
 /.editorconfig
 /.wp-env.json
+/.wp-env.override.json
 /artifacts
 /node_modules
 /vendor
@@ -16,6 +17,7 @@
 /phpunit.xml.dist
 /phpunit-integration.xml.dist
 /.phpunit.result.cache
+/playwright.config.js
 /composer.json
 /composer.lock
 /package.json
