@@ -6,6 +6,7 @@
 /.distignore
 /.gitignore
 /.editorconfig
+/.wp-env.json
 /artifacts
 /node_modules
 /vendor
@@ -13,6 +14,7 @@
 /phpcs.xml
 /phpunit.xml
 /phpunit.xml.dist
+/phpunit-integration.xml.dist
 /.phpunit.result.cache
 /composer.json
 /composer.lock
