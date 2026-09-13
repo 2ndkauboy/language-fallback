@@ -1,0 +1,19 @@
+# Development and CI tooling — never part of the released plugin.
+/.git
+/.github
+/.wordpress-org
+/.distignore
+/.gitignore
+/.editorconfig
+/artifacts
+/node_modules
+/vendor
+/tests
+/phpcs.xml
+/phpunit.xml
+/phpunit.xml.dist
+/.phpunit.result.cache
+/composer.json
+/composer.lock
+/package.json
+/package-lock.json
